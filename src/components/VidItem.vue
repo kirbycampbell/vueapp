@@ -2,13 +2,17 @@
   <div class="vid-item" v-bind:class="{'is-complete':vid.completed}">
     <p>
       <input type="checkbox" v-on:change="markComplete">
-      {{vid.title}}
+
+      <youtube :video-id="vid.title"></youtube>
       <button @click="$emit('del-vid', vid.id)" class="del">X</button>
     </p>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import VueYouTubeEmbed from "vue-youtube-embed";
+Vue.use(VueYouTubeEmbed);
 export default {
   name: "VidItem",
   props: ["vid"],
