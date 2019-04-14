@@ -1,36 +1,16 @@
 <template>
   <div id="app">
     <Header/>
-    <AddVid v-on:add-vid="addVid"/>
-    <Vids v-bind:vids="vids" v-on:del-vid="deleteVid"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Header from "./components/layout/Header";
-import Vids from "./components/Vids";
-import AddVid from "./components/AddVid";
-
 export default {
   name: "app",
   components: {
-    Header,
-    Vids,
-    AddVid
-  },
-  data() {
-    return {
-      vids: []
-    };
-  },
-  methods: {
-    deleteVid(id) {
-      this.vids = this.vids.filter(vid => vid.id !== id);
-    },
-    addVid(newVid) {
-      //const { title, completed } = newVid;
-      this.vids = [...this.vids, newVid];
-    }
+    Header
   }
 };
 </script>
